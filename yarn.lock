@@ -131,6 +131,10 @@ js-stringify@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/js-stringify/-/js-stringify-1.0.2.tgz#1736fddfd9724f28a3682adc6230ae7e4e9679db"
 
+jsfuck@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/jsfuck/-/jsfuck-0.4.0.tgz#aa2a7901d083da631d304742d0b37a1ca45bb0f2"
+
 jstransformer@1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/jstransformer/-/jstransformer-1.0.0.tgz#ed8bf0921e2f3f1ed4d5c1a44f68709ed24722c3"

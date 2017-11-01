@@ -1,0 +1,170 @@
+<script>
+//<![CDATA[
+"use strict";
+function r(e) {
+    /in/.test(document.readyState) ? setTimeout("r(" + e + ")", 9) : e()
+}
+function initAdserver() {
+    pbjs.initAdserverSet || (googletag.cmd.push(function() {
+        pbjs.que.push(function() {
+            pbjs.setTargetingForGPTAsync(),
+            googletag.pubads().refresh()
+        })
+    }),
+    pbjs.initAdserverSet = !0)
+}
+var PREBID_TIMEOUT = 700;
+window.log = function() {
+    window.log.history = window.log.history || [],
+    window.log.history.push(arguments),
+    this.console && console.log(Array.prototype.slice.call(arguments))
+}
+;
+var pbjs = pbjs || {};
+pbjs.que = pbjs.que || [];
+var googletag = googletag || {};
+googletag.cmd = googletag.cmd || [],
+function() {
+    var e = document
+      , n = e.createElement("script");
+    e.location.protocol;
+    n.type = "text/javascript",
+    n.src = "//ap.lijit.com/www/headerauction/prebid.min.js";
+    var t = document.getElementsByTagName("head")[0];
+    t.insertBefore(n, t.firstChild)
+}(),
+googletag.cmd.push(function() {
+    googletag.pubads().disableInitialLoad()
+}),
+pbjs.que.push(function() {
+    var e = [{
+        code: "div-gpt-ad-1505067168290-0",
+        bids: [{
+            bidder: "sovrn",
+            params: {
+                tagid: 516365
+            }
+        }, {
+            bidder: "criteo",
+            params: {
+                zoneId: 1057640
+            }
+        }],
+        sizes: [[728, 90]]
+    }, {
+        code: "div-gpt-ad-1505067168290-1",
+        bids: [{
+            bidder: "sovrn",
+            params: {
+                tagid: 516366
+            }
+        }, {
+            bidder: "criteo",
+            params: {
+                zoneId: 1057643
+            }
+        }],
+        sizes: [[300, 250]]
+    }, {
+        code: "div-gpt-ad-1505067168290-2",
+        bids: [{
+            bidder: "sovrn",
+            params: {
+                tagid: 516367
+            }
+        }, {
+            bidder: "criteo",
+            params: {
+                zoneId: 1057644
+            }
+        }],
+        sizes: [[300, 600]]
+    }];
+    pbjs.addAdUnits(e),
+    pbjs.requestBids({
+        bidsBackHandler: function() {
+            initAdserver()
+        }
+    }),
+    pbjs.bidderSettings = {
+        standard: {
+            adserverTargeting: [{
+                key: "hb_bidder",
+                val: function(e) {
+                    return e.bidderCode
+                }
+            }, {
+                key: "hb_adid",
+                val: function(e) {
+                    return e.adId
+                }
+            }, {
+                key: "hb_pb",
+                val: function(e) {
+                    return e.pbHg
+                }
+            }]
+        }
+    }
+}),
+setTimeout(initAdserver, PREBID_TIMEOUT),
+window.sovrn = window.sovrn || {},
+window.sovrn.auction = window.sovrn.auction || {};
+var beaconFlag = !1;
+window.sovrn.auction = {
+    sendBeacon: function() {
+        try {
+            var e, n;
+            if (beaconFlag)
+                return !1;
+            e = "sovrn_beacon",
+            (n = window.sovrn.auction.createiFrame(e, 1, 1)).src = window.sovrn.auction.getBeaconURL(),
+            document.body.appendChild(n),
+            beaconFlag = !0
+        } catch (e) {
+            return window.log("error making beacon", e),
+            !1
+        }
+        return !0
+    },
+    createiFrame: function(e, n, t) {
+        var o, i, r, a, d, s;
+        i = (o = document.createElement("iframe")).style,
+        d = {
+            id: e,
+            margin: "0",
+            padding: "0",
+            frameborder: "0",
+            width: n + "",
+            height: t + "",
+            scrolling: "no",
+            src: "about:blank"
+        },
+        s = {
+            margin: "0px",
+            padding: "0px",
+            border: "0px none",
+            width: n + "px",
+            height: t + "px",
+            overflow: "hidden"
+        };
+        for (r in d)
+            d.hasOwnProperty(r) && o.setAttribute(r, d[r]);
+        for (a in s)
+            if (s.hasOwnProperty(a))
+                try {
+                    i[a] = s[a]
+                } catch (e) {}
+        return o
+    },
+    getBeaconURL: function() {
+        return "http://gslbeacon.lijit.com/beacon?viewId=lee2ulyn_header_auction&rand=" + Math.floor(9e3 * Math.random()) + "&informer=10852964&type=fpads&loc=" + window.location.host + "&v=1.2"
+    }
+},
+r(function() {
+    window.sovrn.auction.sendBeacon()
+});
+//]]>
+
+</script>
+
